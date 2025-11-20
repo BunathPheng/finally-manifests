@@ -1,0 +1,25 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finally
+  labels:
+    app: finally
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: finally
+  template:
+    metadata:
+      labels:
+        app: finally
+    spec:
+      containers:
+        - name: finally
+          image: docker.io/phengbunath/finally:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
